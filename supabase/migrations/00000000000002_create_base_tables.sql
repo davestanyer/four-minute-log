@@ -6,7 +6,7 @@ begin
   ) then
     -- Create users table
     create table if not exists public.users (
-      id uuid primary key default uuid_generate_v4(),
+      id uuid primary key references auth.users(id) on delete cascade,
       email text unique not null,
       name text not null,
       role text not null check (role in ('admin', 'user')),

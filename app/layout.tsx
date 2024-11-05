@@ -1,12 +1,15 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import "./globals.css"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { Toaster } from "@/components/ui/sonner"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navigation } from "@/components/navigation"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'Four Minute Log',
-  description: 'A productivity app for daily activity tracking and team collaboration',
+  title: "Four Minute Log",
+  description: "Track your daily activities and manage tasks efficiently",
 }
 
 export default function RootLayout({
@@ -15,13 +18,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="min-h-screen bg-background">
-          <main className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          <main className="min-h-screen">
             {children}
           </main>
-        </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

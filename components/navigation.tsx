@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
 const navigation = [
-  { name: "Daily Log", href: "/", icon: Clock },
+  { name: "Daily Log", href: "/log", icon: Clock },
   { name: "Clients", href: "/clients", icon: Briefcase },
   { name: "Team", href: "/team", icon: Users },
   { name: "Recurring", href: "/recurring", icon: RotateCcw },

@@ -1,0 +1,1 @@
+// Middleware removed - direct access to all routes allowed

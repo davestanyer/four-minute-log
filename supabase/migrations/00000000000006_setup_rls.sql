@@ -23,10 +23,20 @@ begin
       to authenticated
       using (true);
 
+    create policy "Users can insert their own profile"
+      on public.users for insert
+      to authenticated
+      with check (auth.uid() = id);
+
     create policy "Users can update their own profile"
       on public.users for update
       to authenticated
       using (auth.uid() = id);
+
+    create policy "Enable insert for service role"
+      on public.users for insert
+      to service_role
+      with check (true);
 
     create policy "Users can read all clients"
       on public.clients for select
